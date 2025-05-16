@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Self-Help Resources | Monah</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/self-help.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="app-header">
+        <div class="header-content">
+          <a href="../app/chat.html" class="back-button">
+            <i class="fas fa-chevron-left"></i>
+            <span>Back</span>
+          </a>
+          <div class="header-title">
+            <div class="title-icon">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <h1>Self-Help Resources</h1>
+          </div>
+          <div class="header-actions">
+            <div class="search-container">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search resources..."
+              />
+              <button class="search-button" id="search-clear-button">
+                <i class="fas fa-search" id="search-icon"></i>
+                <i class="fas fa-times hidden" id="clear-icon"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <div class="category-filter">
+          <div class="filter-tabs">
+            <button class="tab-button active" data-category="all">All</button>
+            <button class="tab-button" data-category="anxiety">Anxiety</button>
+            <button class="tab-button" data-category="depression">
+              Depression
+            </button>
+            <button class="tab-button" data-category="mindfulness">
+              Mindfulness
+            </button>
+            <button class="tab-button" data-category="sleep">Sleep</button>
+          </div>
+        </div>
+
+        <div class="resources-grid">
+          <!-- Resource Card 1 -->
+          <div
+            class="resource-card"
+            data-category="anxiety"
+            data-title="5-Minute Anxiety Relief"
+            data-description="Quick guided exercise to calm your mind and reduce stress"
+          >
+            <div class="card-icon anxiety">
+              <i class="fas fa-headphones"></i>
+            </div>
+            <div class="card-content">
+              <h3>5-Minute Anxiety Relief</h3>
+              <p>Quick guided exercise to calm your mind and reduce stress</p>
+              <div class="card-meta">
+                <span class="duration"><i class="far fa-clock"></i> 5 min</span>
+                <span class="level"
+                  ><i class="fas fa-signal"></i> Beginner</span
+                >
+              </div>
+            </div>
+            <button class="play-button" data-audio="anxiety-relief.mp3">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+
+          <!-- Resource Card 2 -->
+          <div
+            class="resource-card"
+            data-category="sleep"
+            data-title="Sleep Meditation"
+            data-description="20-minute session to help you relax and fall asleep faster"
+          >
+            <div class="card-icon sleep">
+              <i class="fas fa-spa"></i>
+            </div>
+            <div class="card-content">
+              <h3>Sleep Meditation</h3>
+              <p>20-minute session to help you relax and fall asleep faster</p>
+              <div class="card-meta">
+                <span class="duration"
+                  ><i class="far fa-clock"></i> 20 min</span
+                >
+                <span class="level"
+                  ><i class="fas fa-signal"></i> All Levels</span
+                >
+              </div>
+            </div>
+            <button class="play-button" data-audio="sleep-meditation.mp3">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+
+          <!-- Resource Card 3 -->
+          <div
+            class="resource-card"
+            data-category="mindfulness"
+            data-title="Daily Mindfulness Practice"
+            data-description="10-minute guided session to enhance focus and presence"
+          >
+            <div class="card-icon mindfulness">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <div class="card-content">
+              <h3>Daily Mindfulness Practice</h3>
+              <p>10-minute guided session to enhance focus and presence</p>
+              <div class="card-meta">
+                <span class="duration"
+                  ><i class="far fa-clock"></i> Aki10 min</span
+                >
+                <span class="level"
+                  ><i class="fas fa-signal"></i> Beginner</span
+                >
+              </div>
+            </div>
+            <button class="play-button" data-audio="mindfulness-practice.mp3">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+
+          <!-- Resource Card 4 -->
+          <div
+            class="resource-card"
+            data-category="depression"
+            data-title="Overcoming Depression"
+            data-description="Guided session to help you manage depressive thoughts"
+          >
+            <div class="card-icon depression">
+              <i class="fas fa-heart"></i>
+            </div>
+            <div class="card-content">
+              <h3>Overcoming Depression</h3>
+              <p>Guided session to help you manage depressive thoughts</p>
+              <div class="card-meta">
+                <span class="duration"
+                  ><i class="far fa-clock"></i> 15 min</span
+                >
+                <span class="level"
+                  ><i class="fas fa-signal"></i> Intermediate</span
+                >
+              </div>
+            </div>
+            <button class="play-button" data-audio="overcoming-depression.mp3">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+
+          <!-- Resource Card 5 -->
+          <div
+            class="resource-card"
+            data-category="anxiety"
+            data-title="Anxiety Management Techniques"
+            data-description="Learn effective techniques to manage anxiety"
+          >
+            <div class="card-icon anxiety">
+              <i class="fas fa-brain"></i>
+            </div>
+            <div class="card-content">
+              <h3>Anxiety Management Techniques</h3>
+              <p>Learn effective techniques to manage anxiety</p>
+              <div class="card-meta">
+                <span class="duration"
+                  ><i class="far fa-clock"></i> 30 min</span
+                >
+                <span class="level"
+                  ><i class="fas fa-signal"></i> Advanced</span
+                >
+              </div>
+            </div>
+            <button
+              class="play-button"
+              data-audio="anxiety-management-techniques.mp3"
+            >
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+          <!-- Resource Card 6 -->
+
+          <div
+            class="resource-card"
+            data-category="mindfulness"
+            data-title="Mindfulness for Beginners"
+            data-description="Introduction to mindfulness and its benefits"
+          >
+            <div class="card-icon mindfulness">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <div class="card-content">
+              <h3>Mindfulness for Beginners</h3>
+              <p>Introduction to mindfulness and its benefits</p>
+              <div class="card-meta">
+                <span class="duration"
+                  ><i class="far fa-clock"></i> 25 min</span
+                >
+                <span class="level"
+                  ><i class="fas fa-signal"></i> Beginner</span
+                >
+              </div>
+            </div>
+            <button
+              class="play-button"
+              data-audio="mindfulness-for-beginners.mp3"
+            >
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+
+          <!-- More resource cards would go here -->
+
+          <!-- No results message (hidden by default) -->
+          <div class="no-results-message hidden">
+            <i class="fas fa-search"></i>
+            <h3>No resources found</h3>
+            <p>Try adjusting your search or filter criteria</p>
+          </div>
+        </div>
+
+        <!-- Audio Player (hidden by default) -->
+        <div class="audio-player hidden">
+          <div class="player-controls">
+            <button class="control-button" id="play-pause-btn">
+              <i class="fas fa-play"></i>
+            </button>
+            <div class="progress-container">
+              <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="time-display">
+              <span id="current-time">0:00</span> /
+              <span id="duration">0:00</span>
+            </div>
+            <button class="control-button" id="close-player-btn">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="player-info">
+            <h3 id="player-title">Now Playing</h3>
+            <p id="player-description"></p>
+          </div>
+        </div>
+
+        <div class="journal-section">
+          <div class="section-header">
+            <div class="section-icon">
+              <i class="fas fa-pen-fancy"></i>
+            </div>
+            <h2>Guided Journal</h2>
+          </div>
+
+          <div class="journal-tabs">
+            <button class="journal-tab active" data-tab="new-entry">
+              New Entry
+            </button>
+            <button class="journal-tab" data-tab="past-entries">
+              Past Entries
+            </button>
+          </div>
+
+          <!-- New Entry Tab -->
+          <div class="journal-content" id="new-entry-tab">
+            <div class="journal-card">
+              <div class="journal-header">
+                <h3>Today's Reflection</h3>
+                <div class="date-display">
+                  <i class="far fa-calendar"></i>
+                  <span id="current-date">Loading date...</span>
+                </div>
+              </div>
+
+              <div class="journal-prompt">
+                <p class="prompt-text">
+                  What are three things you're grateful for today?
+                </p>
+              </div>
+
+              <div class="journal-entry">
+                <textarea
+                  id="journal-text"
+                  placeholder="Write your thoughts here..."
+                ></textarea>
+                <div class="word-count">0/500 words</div>
+              </div>
+
+              <div class="journal-actions">
+                <button class="save-button" id="save-entry-btn">
+                  <i class="far fa-save"></i> Save Entry
+                </button>
+                <button class="prompt-button" id="new-prompt-btn">
+                  <i class="fas fa-lightbulb"></i> New Prompt
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Past Entries Tab -->
+          <div class="journal-content hidden" id="past-entries-tab">
+            <div class="entries-list" id="entries-container">
+              <!-- Entries will be loaded here dynamically -->
+              <div class="no-entries">
+                <i class="far fa-clipboard"></i>
+                <p>No journal entries yet. Start writing to see them here.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Edit Entry Modal -->
+    <div class="modal hidden" id="edit-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Edit Journal Entry</h3>
+          <button class="close-modal" id="close-edit-modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-date" id="edit-entry-date"></div>
+          <div class="modal-prompt" id="edit-entry-prompt"></div>
+          <textarea id="edit-entry-text"></textarea>
+          <div class="modal-actions">
+            <button class="cancel-button" id="cancel-edit-btn">Cancel</button>
+            <button class="save-button" id="save-edit-btn">Save Changes</button>
+            <button class="delete-button" id="delete-entry-btn">
+              <i class="far fa-trash-alt"></i> Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/self-help.js"></script>
+  </body>
+</html>

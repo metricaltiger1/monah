@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat with Monah</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/chat.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"
+      type="module"
+    ></script>
+  </head>
+  <body>
+    <div class="chat-app-container" id="chat-app-container">
+      <!-- Emotion-based dynamic background -->
+      <div class="chat-bg-overlay" id="chat-bg-overlay"></div>
+
+      <!-- Floating emotion indicators -->
+      <div class="emotion-floaties" id="emotion-floaties"></div>
+
+      <div class="chat-main">
+        <header class="chat-header">
+          <button class="back-btn hover-effect">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+        
+          <div class="user-info">
+            <div class="current-emotion" id="current-emotion">
+              <lottie-player
+                src="../assets/animations/neutral-face.json"
+                background="transparent"
+                speed="1"
+                autoplay
+              ></lottie-player>
+            </div>
+            <div class="name-container">
+              <h2>Monah <span class="streak-badge">🔥 <span id="streak-count">1</span></span></h2>
+              <p>Your emotional companion</p>
+            </div>
+          </div>
+        
+          <button class="menu-btn hover-effect">
+            <i class="fas fa-ellipsis-v menu-icon"></i>
+            <i class="fas fa-times close-icon"></i>
+          </button>
+        </header>
+
+          <!-- Dropdown menu -->
+          <div class="dropdown-menu">
+            <a href="../app/history.html" class="menu-item">
+              <i class="fas fa-history"></i> Emotional History
+            </a>
+            <a href="#" class="menu-item" id="resources-btn">
+              <i class="fas fa-heart"></i> Well-being Resources
+            </a>
+            <a href="#" class="menu-item" id="signout-btn">
+              <i class="fas fa-sign-out-alt"></i> Sign Out
+            </a>
+          </div>
+        </header>
+
+        <!-- Chat messages container -->
+        <div class="chat-messages" id="chat-messages">
+          <!-- Default welcome message -->
+          <div class="chat-message monah-message">
+            <div class="message-content">
+              <p>
+                Hello there! I'm Monah, your emotional support companion. How
+                are you feeling today?
+              </p>
+              <div class="message-time">Just now</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message input with micro-interactions -->
+        <div class="message-input-container">
+          <div class="input-wrapper">
+              <button class="emoji-btn hover-effect">
+                  <i class="far fa-smile"></i>
+              </button>
+              <div 
+                  id="message-input" 
+                  class="message-input" 
+                  contenteditable="true"
+                  placeholder="How are you feeling today?"
+                  role="textbox"
+                  aria-multiline="true"
+              ></div>
+              <div class="input-actions">
+                  <button class="send-btn hover-effect" id="send-btn">
+                      <i class="fas fa-paper-plane"></i>
+                  </button>
+              </div>
+          </div>
+      </div>
+
+      <!-- Emotion feedback modal -->
+      <div class="emotion-feedback-modal" id="emotion-feedback-modal">
+        <div class="modal-content">
+          <button class="close-modal"><i class="fas fa-times"></i></button>
+          <h3>
+            I notice you're feeling <span id="detected-emotion">sad</span>
+          </h3>
+          <p>Would you like to talk about it or try a guided exercise?</p>
+          <div class="feedback-options">
+            <button class="feedback-option talk hover-effect">
+              Talk about it
+            </button>
+            <button class="feedback-option exercise hover-effect">
+              Guided exercise
+            </button>
+            <button class="feedback-option dismiss hover-effect">
+              I'm okay
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resources modal -->
+      <div class="resources-modal" id="resources-modal">
+        <div class="modal-content">
+          <button class="close-modal"><i class="fas fa-times"></i></button>
+          <h3>Well-being Resources</h3>
+
+          <div class="resource-category">
+            <h4>
+              <i class="fas fa-heartbeat"></i> For When You're Feeling Down
+            </h4>
+            <div class="resource-list">
+              <a href="anxiety-relief.html" class="resource-item hover-effect">
+                <div class="resource-icon">
+                  <i class="fas fa-headphones"></i>
+                </div>
+                <div class="resource-info">
+                  <h5>7-minute anxiety relief exercise</h5>
+                  <p>Audio guide to help calm your mind</p>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+              </a>
+              <a href="guided-meditation.html" class="resource-item hover-effect">
+                <div class="resource-icon">
+                  <i class="fas fa-spa"></i>
+                </div>
+                <div class="resource-info">
+                  <h5>Guided meditation for sadness</h5>
+                  <p>10-minute mindfulness practice</p>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+          
+
+          <div class="resource-category">
+            <h4><i class="fas fa-hands-helping"></i> Professional Help</h4>
+            <div class="resource-list">
+              <a href="therapist-finder.html" class="resource-item hover-effect">
+                <div class="resource-icon">
+                  <i class="fas fa-user-md"></i>
+                </div>
+                <div class="resource-info">
+                  <h5>Find a therapist near you</h5>
+                  <p>Connect with licensed professionals</p>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+              </a>
+              <a href="crisis-support.html" class="resource-item hover-effect">
+                <div class="resource-icon">
+                  <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="resource-info">
+                  <h5>24/7 Crisis Hotlines</h5>
+                  <p>Immediate support when you need it</p>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+              </a>
+              <a href="self-help.html" class="resource-item hover-effect">
+                <div class="resource-icon">
+                  <i class="fas fa-book-open"></i>
+                </div>
+                <div class="resource-info">
+                  <h5>Self-Help Resources</h5>
+                  <p>Guided exercises and tools</p>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+              </a>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/firebase.js"></script>
+    <script src="../js/sentiment.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/chat.js"></script>
+  </body>
+</html>

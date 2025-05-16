@@ -1,0 +1,31 @@
+{
+    "name": "Anxious Face",
+    "description": "A face showing anxiety or nervousness",
+    "version": "1.0",
+    "author": "Your Name",
+    "tags": ["anxious", "face", "emoji", "emotion"],
+    "components": {
+      "eyes": {
+        "type": "uneven",
+        "left": "wide-open",
+        "right": "squinted",
+        "eyebrows": "raised"
+      },
+      "mouth": {
+        "type": "quivering",
+        "expression": "nervous-smile"
+      },
+      "color": {
+        "face": "#FFD699",
+        "details": "#000000"
+      },
+      "sweatDrops": {
+        "count": 3,
+        "position": "forehead"
+      }
+    },
+    "metadata": {
+      "created": "2023-11-15",
+      "license": "CC0"
+    }
+  }

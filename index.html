@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monah - Your Emotional Support Companion</title>
+    <!-- PWA manifest -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2196f3" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <!-- Animated Gradient Background -->
+    <div class="gradient-bg"></div>
+
+    <!-- Floating Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+      <!-- Fixed Header -->
+      <header class="app-header">
+        <div class="header-container">
+          <div class="logo-container">
+            <a href="#hero" class="logo-link">
+              <lottie-player
+                src="assets/animations/anxious-face.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+              ></lottie-player>
+              <h1 class="logo-text">Monah</h1>
+            </a>
+          </div>
+
+          <nav class="main-nav">
+            <a href="#features" class="nav-link hover-underline">Features</a>
+            <a href="#how-it-works" class="nav-link hover-underline"
+              >How It Works</a
+            >
+            <a href="#testimonials" class="nav-link hover-underline"
+              >Testimonials</a
+            >
+            <a href="#donate" class="nav-link donate-link hover-underline">
+              <i class="fas fa-heart"></i> Donate
+            </a>
+            <a href="auth/login.html" class="cta-button pulse">Get Started</a>
+          </nav>
+
+          <button class="mobile-menu-btn" id="mobile-menu-btn">
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" id="mobile-menu">
+        <button class="mobile-menu-close" id="mobile-menu-close">
+          <i class="fas fa-times"></i>
+        </button>
+        <a href="#features" class="mobile-nav-link">Features</a>
+        <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
+        <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
+        <a href="auth/login.html" class="mobile-cta-button">Get Started</a>
+        <div class="mobile-donation">
+          <div class="donation-content">
+            <p>Support our mission</p>
+            <a href="#donate" class="donate-btn"
+              ><i class="fas fa-heart"></i> Donate</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="hero-section" id="hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h2 class="typing-text" id="typing-text"></h2>
+            <h1 class="hero-title">Your personal mental health companion</h1>
+            <p class="hero-subtext">
+              Monah provides compassionate, AI-powered emotional support
+              whenever you need it, completely free.
+            </p>
+            <div class="hero-cta">
+              <a href="auth/signup.html" class="cta-button primary pulse-glow">
+                <span>Start Chatting</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <a href="#how-it-works" class="cta-button secondary hover-effect">
+                <span>Learn More</span>
+              </a>
+            </div>
+          </div>
+          <div class="hero-illustration">
+            <div class="chat-preview">
+              <div class="chat-message monah-message">
+                <div class="message-avatar">
+                  <lottie-player
+                    src="assets/animations/logo-animation.json"
+                    background="transparent"
+                    speed="1"
+                    style="width: 32px; height: 32px"
+                    loop
+                    autoplay
+                  ></lottie-player>
+                </div>
+                <div class="message-bubble">
+                  <p>Hi there! How are you feeling today?</p>
+                </div>
+              </div>
+              <div class="chat-message user-message">
+                <div class="message-bubble">
+                  <p>A bit anxious about my upcoming presentation...</p>
+                </div>
+              </div>
+              <div class="chat-message monah-message">
+                <div class="message-avatar">
+                  <lottie-player
+                    src="assets/animations/logo-animation.json"
+                    background="transparent"
+                    speed="1"
+                    style="width: 32px; height: 32px"
+                    loop
+                    autoplay
+                  ></lottie-player>
+                </div>
+                <div class="message-bubble">
+                  <p>
+                    That's completely understandable. Would breathing exercises
+                    help right now?
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="scroll-indicator">
+          <div class="mouse">
+            <div class="wheel"></div>
+          </div>
+          <p>Scroll to explore</p>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="features-section" id="features">
+        <div class="section-header">
+          <h2 class="section-title">Compassionate Support, Always Available</h2>
+          <p class="section-subtitle">
+            Monah is designed to be there for you whenever you need emotional
+            support
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <lottie-player
+                src="assets/animations/heart-beat.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+              ></lottie-player>
+            </div>
+            <h3>Emotional Tracking</h3>
+            <p>
+              Monah remembers your emotional patterns and checks in with you
+              proactively.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <lottie-player
+                src="assets/animations/personalized.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+              ></lottie-player>
+            </div>
+            <h3>Personalized Support</h3>
+            <p>
+              Responses tailored to your unique emotional needs and
+              communication style.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <lottie-player
+                src="assets/animations/resources.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+              ></lottie-player>
+            </div>
+            <h3>Well-being Resources</h3>
+            <p>
+              Access to guided exercises, meditations, and professional support
+              options.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <lottie-player
+                src="assets/animations/privacy.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+              ></lottie-player>
+            </div>
+            <h3>Privacy Focused</h3>
+            <p>Your conversations are confidential and securely encrypted.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works Section -->
+      <section class="how-it-works-section" id="how-it-works">
+        <div class="section-header">
+          <h2 class="section-title">How Monah Supports You</h2>
+          <p class="section-subtitle">
+            Simple, compassionate support whenever you need it
+          </p>
+        </div>
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Share How You Feel</h3>
+              <p>
+                Start by simply expressing your current emotions or situation in
+                your own words.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Receive Compassionate Support</h3>
+              <p>
+                Monah responds with understanding and provides appropriate
+                emotional support.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Explore Helpful Resources</h3>
+              <p>
+                Get personalized exercises, meditations, or suggestions based on
+                your needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section class="testimonials-section" id="testimonials">
+        <div class="section-header">
+          <h2 class="section-title">Voices of Comfort</h2>
+          <p class="section-subtitle">
+            What our community says about their experience with Monah
+          </p>
+        </div>
+        <div class="testimonials-carousel" id="testimonials-carousel">
+          <div class="testimonial active">
+            <div class="testimonial-content">
+              <div class="testimonial-text">
+                <p>
+                  "Monah has been a constant support during my difficult times.
+                  It's amazing how understanding and responsive it is to my
+                  emotional needs."
+                </p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img src="assets/illustrations/user1.png" alt="Sarah K." />
+                </div>
+                <div class="author-info">
+                  <h4>Sarah K.</h4>
+                  <p>Daily User</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial-content">
+              <div class="testimonial-text">
+                <p>
+                  "The emotional tracking feature helped me recognize patterns
+                  in my mood that I hadn't noticed before. It's been truly
+                  eye-opening."
+                </p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img src="assets/illustrations/user2.png" alt="James L." />
+                </div>
+                <div class="author-info">
+                  <h4>James L.</h4>
+                  <p>Student</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial-content">
+              <div class="testimonial-text">
+                <p>
+                  "I was skeptical at first, but Monah really remembers how I
+                  feel and checks in with me. It's become part of my daily
+                  routine."
+                </p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img src="assets/illustrations/user3.png" alt="Priya M." />
+                </div>
+                <div class="author-info">
+                  <h4>Priya M.</h4>
+                  <p>Graphic Designer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-prev">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="carousel-dots"></div>
+            <button class="carousel-next">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Donation Section -->
+      <section class="donation-section" id="donate">
+        <div class="donation-container">
+          <div class="donation-content">
+            <h2 class="section-title">Fuel Our Mission of Compassion</h2>
+            <p class="section-subtitle">
+              Every contribution helps us provide free emotional support to
+              those who need it most
+            </p>
+            <div class="donation-reasons">
+              <div class="reason-card">
+                <div class="reason-icon">
+                  <lottie-player
+                    src="https://assets1.lottiefiles.com/packages/lf20_5itouirj.json"
+                    background="transparent"
+                    speed="1"
+                    loop
+                    autoplay
+                  ></lottie-player>
+                </div>
+                <h3>Keep the Conversation Going</h3>
+                <p>
+                  Your support helps maintain our servers and AI infrastructure
+                </p>
+              </div>
+              <div class="reason-card">
+                <div class="reason-icon">
+                  <lottie-player
+                    src="https://assets1.lottiefiles.com/packages/lf20_obhph3sh.json"
+                    background="transparent"
+                    speed="1"
+                    loop
+                    autoplay
+                  ></lottie-player>
+                </div>
+                <h3>Expand Our Reach</h3>
+                <p>Help us translate Monah to more languages and cultures</p>
+              </div>
+              <div class="reason-card">
+                <div class="reason-icon">
+                  <lottie-player
+                    src="https://assets1.lottiefiles.com/packages/lf20_mw5r2r8t.json"
+                    background="transparent"
+                    speed="1"
+                    loop
+                    autoplay
+                  ></lottie-player>
+                </div>
+                <h3>Support Innovation</h3>
+                <p>Fund new features to make Monah even more helpful</p>
+              </div>
+            </div>
+            <div class="donation-cta">
+              <div class="payment-container">
+                <h3>Choose your payment method</h3>
+                <div class="payment-methods">
+                  <button class="payment-btn mpesa-btn hover-effect">
+                    <i class="fas fa-mobile-alt"></i> M-Pesa
+                  </button>
+                  <button class="payment-btn paypal-btn hover-effect">
+                    <i class="fab fa-paypal"></i> PayPal
+                  </button>
+                </div>
+                <p class="donation-note">
+                  All donations are securely processed. We never store your
+                  payment information.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA Section -->
+      <section class="final-cta-section">
+        <div class="cta-container">
+          <div class="cta-content">
+            <h2>Begin Your Emotional Wellness Journey Today</h2>
+            <p class="cta-subtext">
+              Join our community of thousands finding support with Monah
+            </p>
+            <div class="cta-actions">
+              <a href="auth/signup.html" class="cta-button primary">
+                <span>Start Chatting Now</span>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5 12H19M19 12L12 5M19 12L12 19"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="cta-button secondary">
+                <span>Learn More</span>
+              </a>
+            </div>
+          </div>
+          <div class="cta-decoration">
+            <div class="floating-shapes">
+              <div class="shape circle"></div>
+              <div class="shape triangle"></div>
+              <div class="shape square"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="app-footer">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <lottie-player
+                src="assets/animations/logo-animation.json"
+                background="transparent"
+                speed="1"
+                style="width: 40px; height: 40px"
+                loop
+                autoplay
+              ></lottie-player>
+              <h3>Monah</h3>
+            </div>
+            <p class="footer-tagline">
+              Compassionate support whenever you need it
+            </p>
+            <div class="social-links">
+              <a href="#" aria-label="Twitter" class="social-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="Instagram" class="social-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="5"
+                    ry="5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <circle cx="18" cy="6" r="1" fill="currentColor" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Facebook" class="social-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Community</a></li>
+              <li><a href="#">Guides</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Press</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-newsletter">
+            <h4>Stay Updated</h4>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Your email address" required />
+              <button type="submit">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5 12H19M19 12L12 5M19 12L12 19"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </form>
+            <p class="newsletter-note">
+              Get the latest mental health tips and updates
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© <span id="current-year"></span> Monah. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookies</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

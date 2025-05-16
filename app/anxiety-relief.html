@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serenity - Immersive Meditation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/anxiety-relief.css" />
+  </head>
+  <body>
+    <div class="meditation-container">
+      <!-- Start Prompt -->
+      <div id="start-prompt">Click anywhere to start the meditation</div>
+
+      <!-- Error Message -->
+      <div id="error-message">
+        Unable to load audio. Please try again later or continue without sound.
+      </div>
+
+      <!-- Cosmic Background -->
+      <div class="cosmic-bg">
+        <div class="stars" id="stars"></div>
+        <div class="particles" id="particles"></div>
+      </div>
+
+      <!-- Breathing Orb -->
+      <div class="breathing-orb" id="breathing-orb">
+        <div class="orb-glow"></div>
+      </div>
+
+      <!-- Meditation Content -->
+      <div class="meditation-content">
+        <h1 class="meditation-title">Cosmic Serenity</h1>
+        <p class="meditation-subtitle">Guided Breathing Meditation</p>
+
+        <div class="breathing-guide">
+          <p class="breath-text" id="breath-text">Breathe In</p>
+          <p class="breath-instruction" id="breath-instruction">
+            Inhale deeply through your nose for 4 seconds, filling your lungs
+            completely
+          </p>
+        </div>
+      </div>
+
+      <!-- Breathing Rhythm Visualizer -->
+      <div class="rhythm-visualizer" id="rhythm-visualizer">
+        <div class="rhythm-bar"></div>
+        <div class="rhythm-bar"></div>
+        <div class="rhythm-bar"></div>
+        <div class="rhythm-bar"></div>
+        <div class="rhythm-bar"></div>
+        <div class="rhythm-bar"></div>
+        <div class="rhythm-bar"></div>
+        <div class="rhythm-bar"></div>
+      </div>
+
+      <!-- Time Display -->
+      <div class="time-display">
+        <span id="current-time">0:00</span> / <span id="total-time">10:00</span>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button
+          class="control-btn"
+          id="ambience-btn"
+          aria-label="Change ambience"
+        >
+          <i class="fas fa-mountain"></i>
+        </button>
+        <button class="control-btn" id="volume-btn" aria-label="Mute audio">
+          <i class="fas fa-volume-up"></i>
+        </button>
+        <button
+          class="control-btn"
+          id="play-pause-btn"
+          aria-label="Pause meditation"
+        >
+          <i class="fas fa-pause"></i>
+        </button>
+        <button class="control-btn" id="exit-btn" aria-label="Exit meditation">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <script src="../js/anxiety-relief.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  </body>
+</html>

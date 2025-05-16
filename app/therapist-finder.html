@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find a Therapist | Monah</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/therapist-finder.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Main Therapist Finder Page -->
+    <div class="therapist-finder-container" id="finderPage">
+      <!-- Header remains the same as before -->
+      <header class="app-header">
+        <div class="header-content">
+          <a href="../app/chat.html" class="back-button">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+          <div class="header-title">
+            <h1>Find Your Therapist</h1>
+            <p class="subtitle">
+              Connect with licensed professionals who can help
+            </p>
+          </div>
+          <div class="header-actions">
+            <button class="filter-toggle" id="filterToggle">
+              <i class="fas fa-sliders-h"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Search section remains the same -->
+      <div class="search-section">
+        <div class="search-container">
+          <i class="fas fa-search search-icon"></i>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by name, specialty or location..."
+            class="search-input"
+          />
+          <button class="search-button" id="searchButton">Search</button>
+        </div>
+      </div>
+
+      <!-- Filter panel remains the same but with updated IDs -->
+      <div class="filter-panel" id="filterPanel">
+        <div class="filter-header">
+          <h3>Filter Therapists</h3>
+          <button class="close-filter" id="closeFilter">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="filter-group">
+          <h4>Specialization</h4>
+          <div class="filter-chips" id="specializationFilters">
+            <div class="filter-chip active" data-specialization="all">All</div>
+            <div class="filter-chip" data-specialization="anxiety">Anxiety</div>
+            <div class="filter-chip" data-specialization="depression">
+              Depression
+            </div>
+            <div class="filter-chip" data-specialization="trauma">Trauma</div>
+            <div class="filter-chip" data-specialization="relationships">
+              Relationships
+            </div>
+            <div class="filter-chip" data-specialization="ptsd">PTSD</div>
+            <div class="filter-chip" data-specialization="addiction">
+              Addiction
+            </div>
+            <div class="filter-chip" data-specialization="ocd">OCD</div>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h4>Location</h4>
+          <div class="location-options">
+            <div class="location-option active" data-location-type="virtual">
+              <i class="fas fa-globe"></i>
+              <span>Anywhere (Virtual)</span>
+            </div>
+            <div class="location-option" data-location-type="nearby">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Near Me</span>
+            </div>
+            <div class="location-input">
+              <input
+                type="text"
+                id="locationInput"
+                placeholder="Enter city or region"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h4>Session Type</h4>
+          <div class="session-options">
+            <div class="session-option active" data-session-type="virtual">
+              <i class="fas fa-video"></i>
+              <span>Virtual</span>
+            </div>
+            <div class="session-option" data-session-type="in-person">
+              <i class="fas fa-building"></i>
+              <span>In-Person</span>
+            </div>
+            <div class="session-option" data-session-type="both">
+              <i class="fas fa-calendar-check"></i>
+              <span>Both</span>
+            </div>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h4>Languages</h4>
+          <select class="language-select" id="languageSelect">
+            <option value="">All Languages</option>
+            <option value="english">English</option>
+            <option value="swahili">Swahili</option>
+            <option value="french">French</option>
+            <option value="spanish">Spanish</option>
+          </select>
+        </div>
+        <div class="filter-actions">
+          <button class="reset-filters" id="resetFilters">Reset Filters</button>
+          <button class="apply-filters" id="applyFilters">Apply Filters</button>
+        </div>
+      </div>
+
+      <!-- Results section with dynamic content -->
+      <main class="therapist-results">
+        <div class="results-header">
+          <h2 id="resultsTitle">Recommended Therapists</h2>
+          <div class="sort-options">
+            <span>Sort by:</span>
+            <select class="sort-select" id="sortSelect">
+              <option value="recommended">Recommended</option>
+              <option value="rating">Highest Rated</option>
+              <option value="distance">Nearest</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="therapist-grid" id="therapistGrid">
+          <!-- Therapist cards will be dynamically inserted here -->
+        </div>
+      </main>
+
+      <div class="floating-action">
+        <button class="fab-button" id="mapViewButton">
+          <i class="fas fa-map-marked-alt"></i>
+          <span>Map View</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Therapist Profile Page (hidden by default) -->
+    <div
+      class="therapist-profile-container"
+      id="profilePage"
+      style="display: none"
+    >
+      <header class="profile-header">
+        <button class="back-button" id="backToFinder">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <h1>Therapist Profile</h1>
+      </header>
+
+      <div class="profile-content" id="profileContent">
+        <!-- Profile content will be dynamically inserted here -->
+      </div>
+    </div>
+
+    <!-- Booking Modal (hidden by default) -->
+    <div class="booking-modal" id="bookingModal" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="bookingTitle">Book Appointment</h2>
+          <button class="close-modal" id="closeModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="therapist-info">
+            <div class="therapist-avatar">
+              <img id="bookingTherapistImage" src="" alt="Therapist" />
+            </div>
+            <div class="therapist-details">
+              <h3 id="bookingTherapistName"></h3>
+              <p class="specialty" id="bookingTherapistSpecialty"></p>
+            </div>
+          </div>
+
+          <div class="booking-section">
+            <h3>Select Date</h3>
+            <div class="date-picker" id="datePicker">
+              <!-- Dates will be dynamically inserted here -->
+            </div>
+
+            <h3>Available Time Slots</h3>
+            <div class="time-slots" id="timeSlots">
+              <!-- Time slots will be dynamically inserted here -->
+            </div>
+
+            <h3>Session Type</h3>
+            <div class="session-type-selector">
+              <div class="session-option active" data-session-type="virtual">
+                <i class="fas fa-video"></i>
+                <span>Virtual</span>
+              </div>
+              <div class="session-option" data-session-type="in-person">
+                <i class="fas fa-building"></i>
+                <span>In-Person</span>
+              </div>
+            </div>
+
+            <div class="booking-summary">
+              <div class="summary-item">
+                <span>Duration:</span>
+                <span>50 minutes</span>
+              </div>
+              <div class="summary-item">
+                <span>Fee:</span>
+                <span id="bookingFee"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="cancel-button" id="cancelBooking">Cancel</button>
+          <button class="confirm-button" id="confirmBooking">
+            Confirm Booking
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirmation Modal (hidden by default) -->
+    <div
+      class="confirmation-modal"
+      id="confirmationModal"
+      style="display: none"
+    >
+      <div class="confirmation-content">
+        <div class="confirmation-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h2>Appointment Confirmed!</h2>
+        <p id="confirmationDetails"></p>
+        <div class="confirmation-actions">
+          <button class="view-appointments" id="viewAppointments">
+            View My Appointments
+          </button>
+          <button class="close-confirmation" id="closeConfirmation">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/therapist-finder.js"></script>
+  </body>
+</html>

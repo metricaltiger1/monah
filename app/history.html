@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Emotional History | Monah</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/history.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  </head>
+  <body>
+    <div class="history-container">
+      <!-- Header with back button and title -->
+      <header class="history-header">
+        <a href="../app/chat.html" class="back-btn hover-effect">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+        <h1>Your Emotional Journey</h1>
+        <div class="header-actions">
+          <button id="filter-btn" class="hover-effect">
+            <i class="fas fa-filter"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main content area -->
+      <main class="history-content">
+        <!-- Summary cards -->
+        <section class="summary-cards">
+          <div class="summary-card mood-card">
+            <div class="card-content">
+              <div class="card-icon">
+                <i class="fas fa-smile"></i>
+              </div>
+              <div class="card-info">
+                <h3>Current Mood</h3>
+                <div class="mood-value" id="current-mood">Neutral</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="summary-card streak-card">
+            <div class="card-content">
+              <div class="card-icon">
+                <i class="fas fa-fire"></i>
+              </div>
+              <div class="card-info">
+                <h3>Engagement Streak</h3>
+                <div class="streak-value" id="streak-count">0 days</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Time period selector -->
+        <section class="time-selector">
+          <button class="time-btn active" data-period="week">Week</button>
+          <button class="time-btn" data-period="month">Month</button>
+          <button class="time-btn" data-period="year">Year</button>
+          <button class="time-btn" data-period="all">All Time</button>
+        </section>
+
+        <!-- Mood trend chart -->
+        <section class="chart-section">
+          <h2 class="section-title">Mood Trends</h2>
+          <div class="chart-container">
+            <div id="mood-trend-chart"></div>
+          </div>
+        </section>
+
+        <!-- Emotion distribution -->
+        <section class="chart-section">
+          <h2 class="section-title">Emotion Distribution</h2>
+          <div class="chart-container">
+            <canvas id="emotion-distribution-chart"></canvas>
+          </div>
+        </section>
+
+        <!-- Word cloud -->
+        <section class="chart-section">
+          <h2 class="section-title">Frequent Words</h2>
+          <div class="word-cloud-container" id="word-cloud">
+            <!-- Words will be dynamically inserted here -->
+          </div>
+        </section>
+
+        <!-- Daily insights -->
+        <section class="insights-section">
+          <h2 class="section-title">Daily Insights</h2>
+          <div class="insights-container" id="daily-insights">
+            <!-- Insights will be dynamically inserted here -->
+          </div>
+        </section>
+      </main>
+
+      <!-- Filter modal -->
+      <div class="filter-modal" id="filter-modal">
+        <div class="modal-content">
+          <button class="close-modal"><i class="fas fa-times"></i></button>
+          <h3>Filter History</h3>
+
+          <div class="filter-group">
+            <h4>Time Period</h4>
+            <div class="filter-options">
+              <label class="filter-option">
+                <input type="radio" name="time-period" value="week" checked />
+                <span>Last Week</span>
+              </label>
+              <label class="filter-option">
+                <input type="radio" name="time-period" value="month" />
+                <span>Last Month</span>
+              </label>
+              <label class="filter-option">
+                <input type="radio" name="time-period" value="year" />
+                <span>Last Year</span>
+              </label>
+              <label class="filter-option">
+                <input type="radio" name="time-period" value="all" />
+                <span>All Time</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Emotions</h4>
+            <div class="filter-options">
+              <label class="filter-option">
+                <input type="checkbox" name="emotion" value="happy" checked />
+                <span>Happy</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="emotion" value="sad" checked />
+                <span>Sad</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="emotion" value="angry" checked />
+                <span>Angry</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="emotion" value="anxious" checked />
+                <span>Anxious</span>
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" name="emotion" value="neutral" checked />
+                <span>Neutral</span>
+              </label>
+            </div>
+          </div>
+
+          <button class="apply-filters-btn hover-effect">Apply Filters</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/firebase.js"></script>
+    <script src="../js/history.js"></script>
+  </body>
+</html>
